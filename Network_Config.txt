@@ -1,0 +1,55 @@
+Router Config
+
+Enable 
+Config t
+Hostname R4
+Interface gi 0/1
+ip address 192.168.4.1 255.255.255.0
+no shut
+Interface gi 0/2
+ip address 192.168.3.1 255.255.255.0
+no shut
+exit
+Router ospf 1
+Router-id 172.0.0.15
+network 192.168.0.0 0.0.255.255 area 0
+-----------------------------------------------------
+Switch/Router 192.168.4 DHCP Config
+
+Enable
+Config t
+IP DHCP pool Aubergine 
+default-router 192.168.4.1
+network 192.168.4.0 255.255.255.0
+IP dhcp excluded-address 192.168.4.1 192.168.4.11 
+interface vlan 1 
+ip address 192.168.4.2 255.255.255.0
+no shut
+-----------------------------------------------------
+Router Config
+
+Enable 
+Config t
+Interface gi 0/2
+ip address 192.168.3.2 255.255.255.0
+no shut
+Interface gi 0/1
+ip address 192.168.7.1 255.255.255.0
+no shut
+exit
+Router ospf 1
+Router-id 172.0.0.16
+network 192.168.0.0 0.0.255.255 area 0
+
+--------------------------------------------------
+Switch/Router 192.168.7 DHCP Config
+
+Enable
+Config t
+IP DHCP pool Aubergine 
+default-router 192.168.7.1
+network 192.168.7.0 255.255.255.0
+IP dhcp excluded-address 192.168.7.1 192.168.7.11 
+interface vlan 1 
+ip address 192.168.7.2 255.255.255.0
+no shut
